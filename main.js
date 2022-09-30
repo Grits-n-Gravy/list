@@ -17,11 +17,11 @@ const mkLi = document.createElement("li");
 
 // function for appending data into "To Do List"
 function addInput() {
-  var paragraph = document.createElement("p");
-  var itemInput = document.createElement("input");
+  let paragraph = document.createElement("p");
+  let itemInput = document.createElement("input");
   itemInput.type = "text";
-  var itemLi = document.createElement("ol");
-  var addButton = document.createElement("button");
+  let itemLi = document.createElement("ol");
+  let addButton = document.createElement("button");
   addButton.innerText = "+";
   paragraph.classList.add("paragraphStyling");
   paragraph.innerText = inputField.value;
@@ -29,11 +29,8 @@ function addInput() {
   paragraph.appendChild(itemInput);
   paragraph.appendChild(itemLi);
   addToDoContainer.appendChild(paragraph);
-  paragraph.addEventListener("click", function () {
-    paragraph.style.textDecoration = "line-through";
-  });
   addButton.addEventListener("click", function () {
-    var listItem = document.createElement("li");
+    let listItem = document.createElement("li");
     itemLi.appendChild(listItem);
     listItem.innerText = itemInput.value;
     itemInput.value = "";
@@ -41,6 +38,11 @@ function addInput() {
 
   paragraph.addEventListener("dblclick", function () {
     addToDoContainer.removeChild(paragraph);
+  });
+}
+function strikeThrough() {
+  paragraph.addEventListener("click", function () {
+    paragraph.style.textDecoration = "line-through";
   });
 }
 
