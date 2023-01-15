@@ -5,12 +5,13 @@ body {
   background-color: #9a8d7e;
   display: flex;
   align-items: center;
+  justify-content: flex-start;
 }
 #logo_container {
-  border: 3px solid;
   transform: rotate(90deg);
   display: flex;
-  align-content: flex-start;
+  justify-content: flex-start;
+  margin-left: -475px;
 }
 .logo {
   font-size: xx-large;
@@ -18,22 +19,21 @@ body {
 .logo h1 {
   display: flex;
   justify-content: center;
-  border: 1px solid black;
   width: 600px;
 }
 
 .container {
   width: 400px;
   height: 65px;
-  border: 1px solid black;
   border-radius: 25px;
   padding-left: 10px;
+  display: flex;
+  align-content: center;
 }
 
 #input_field {
+  border-radius: 20px;
   background-color: #9a8d7e;
-  border: 1px solid;
-  margin-top: 15px;
   margin-bottom: 20px;
   width: 200px;
   height: 40px;
@@ -43,14 +43,15 @@ body {
 }
 
 #addToDo {
+  border-radius: 30px;
   background-color: #9a8d7e;
   height: 40px;
   width: 50px;
   vertical-align: middle;
   font-size: 30px;
-  border: 1px solid black;
   padding-bottom: 10px;
-  margin-bottom: 5px;
+  margin-right: 30px;
+
 }
 
 .paragraphStyling {

@@ -13,50 +13,73 @@ let addToDoContainer = document.getElementById("toDoContainer");
 let inputField = document.getElementById("input_field");
 let addButton = document.createElement("button");
 
-// function for appending data into "To Do List"
-function createTask() {
-  let paragraph = document.createElement("p");
-  paragraph.innerText = inputField.value;
-  addButton.innerText = "+";
-  paragraph.appendChild(addButton);
-  addToDoContainer.appendChild(paragraph);
-  createSubTask();
-}
-
-function createSubTask() {
-  var paragraph = document.createElement("p");
-  var itemInput = document.createElement("input");
-  var itemLi = document.createElement("ol");
-
-  paragraph.appendChild(itemInput);
-  paragraph.appendChild(itemLi);
-  addToDoContainer.appendChild(paragraph);
-
-  addButton.addEventListener("click", function () {
-    var listItem = document.createElement("li");
-    itemLi.appendChild(listItem);
-    listItem.innerText = itemInput.value;
-    itemInput.value = "";
-  });
-}
-
-function removeInput() {
-  paragraph.addEventListener("dblclick", function () {
-    addToDoContainer.removeChild(paragraph);
-  });
-}
-
 function strikeThrough() {
   paragraph.addEventListener("click", function () {
     paragraph.style.textDecoration = "line-through";
   });
 }
 
+// function for appending data into "To Do List"
+function createTask() {
+  let list = document.createElement("li");
+  list.innerText = inputField.value;
+  inputField.value = ""
+  addButton.innerText = "+";
+  list.appendChild(addButton);
+  addToDoContainer.appendChild(list);
+  list.addEventListener("dblclick", function () {
+    addToDoContainer.removeChild(list,);
+  });
+  createSubTask();
+  
+}
+
+function createSubTask() {
+  let subTask = document.createElement("p");
+  let itemInput = document.createElement("input");
+  let itemLi = document.createElement("ol");
+  subTask.appendChild(itemInput);
+  subTask.appendChild(itemLi);
+  addToDoContainer.appendChild(subTask);
+
+  subTask.addEventListener("dblclick", function () {
+    addToDoContainer.removeChild(subTask);
+  });
+  
+  addButton.addEventListener("click", function () {
+    let listItem = document.createElement("li");
+    itemLi.appendChild(listItem);
+    listItem.innerText = itemInput.value;
+    
+  });
+  itemInput.addEventListener ("keypress",function (event){
+    if (event.key==="Enter"){
+      let listItem = document.createElement("li");
+      itemLi.appendChild(listItem);
+  listItem.innerText = itemInput.value;
+  itemInput.value = "";
+
+  subTask.addEventListener("click", function () {
+    listItem.style.textDecoration = "line-through";
+  });    
+}
+  })
+}
+function removeInput() {
+   paragraph.addEventListener("dblclick", function () {
+    addToDoContainer.removeChild(paragraph);
+  });
+
+}
+
+
 // appends data on "Enter" key
 inputField.addEventListener("keypress", function (event) {
   if (event.key === "Enter") {
     createTask();
-    inputField.value = "";
+    
+    
+  
   }
 });
 
